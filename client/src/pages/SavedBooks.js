@@ -3,7 +3,8 @@ import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap
 // import {GET_ME, REMOVE_BOOK} from '../utils/mutations';
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
-import {GET_ME, REMOVE_BOOK} from '../utils/queries';
+import {GET_ME} from '../utils/queries';
+import {REMOVE_BOOK} from '../utils/mutations';
 
 const SavedBooks = () => {
   const [userData, setUserData] = useQuery(GET_ME);
