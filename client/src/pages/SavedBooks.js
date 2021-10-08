@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
-import {GET_ME, REMOVE_BOOK} from '../utils/mutations';
+// import {GET_ME, REMOVE_BOOK} from '../utils/mutations';
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 import {GET_ME, REMOVE_BOOK} from '../utils/queries';
@@ -20,7 +20,7 @@ const SavedBooks = () => {
           return false;
         }
 
-        const response = await getMe(token);
+        const response = await GET_ME(token);
 
         if (!response.ok) {
           throw new Error('something went wrong!');
@@ -45,7 +45,7 @@ const SavedBooks = () => {
     }
 
     try {
-      const response = await useMutation(removeBook(bookId, token));
+      const response = await useMutation(REMOVE_BOOK(bookId, token));
 
       if (!response.ok) {
         throw new Error('something went wrong!');
