@@ -14,7 +14,7 @@ import {
     uri: '/graphql'
   });
 
-  const authLink = setContext((_, {header}) => {
+  const authLink = setContext((_, { headers }) => {
     const token = localStorage.getItem('id_token');
     return {
       headers: {
