@@ -65,9 +65,17 @@ const SearchBooks = () => {
     }
 
     try {
-      const response = await useMutation(saveBook(bookToSave, token));
+      const response = await saveBook({
+        variables: {
+          saveBookDescription: bookToSave.description,
+          saveBookBookId: bookToSave.bookId,
+          saveBookImage: bookToSave.image,
+          saveBookTitle: bookToSave.title,
+          saveBookAuthors: bookToSave.authors
+        }
+      });
 
-      if (!response.ok) {
+      if (!response.formData.saveBook) {
         throw new Error('something went wrong!');
       }
 
