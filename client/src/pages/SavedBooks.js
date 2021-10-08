@@ -12,6 +12,7 @@ const SavedBooks = () => {
 
   // use this to determine if `useEffect()` hook needs to run again
  const [deleteBook, {error, data}] = useMutation(REMOVE_BOOK);
+ const query = useQuery(GET_ME, {});
  if(query.loading) {
    setUserData(query.loading)
    return <h2>Loading...</h2>
@@ -56,7 +57,7 @@ const SavedBooks = () => {
       const updatedUser = await response.deleteBook;
       setUserData(updatedUser);
       // upon success, remove book's id from localStorage
-      deleteBookId(bookId);
+      removeBookId(bookId);
     } catch (err) {
       console.error(err);
     }
